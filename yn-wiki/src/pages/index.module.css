@@ -3,12 +3,12 @@
  * and scoped locally.
  */
 
-.heroBanner {
+/* .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
+} */
 
 @media screen and (max-width: 966px) {
   .heroBanner {
@@ -20,4 +20,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* 可选：根据需要调整 */
+  align-items: flex-start; /* 可选：根据需要调整 */
+  padding: 20px; /* 可选：添加一些内边距 */
+}
+
+.heroBanner {
+  flex: 1; /* 让Header占据一半的宽度 */
+}
+
+.HomepageFeatures {
+  flex: 1; /* 让Features占据另一半的宽度 */
 }
