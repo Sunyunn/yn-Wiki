@@ -5,10 +5,46 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: '',
-    Svg: require('../../static/img/undraw_road_sign_re_3kc3.svg').default,
+    Svg: require('../../static/img/undraw_romantic_getaway_re_3f45.svg').default,
     description: (
       <>
-        
+        {/* 浪漫之旅 */}
+      </>
+    ),
+  },
+  {
+    title: '',
+    Svg: require('../../static/img/undraw_vault_re_s4my.svg').default,
+    description: (
+      <>
+        {/* 总结归纳 */}
+      </>
+    ),
+  },
+  {
+    title: '',
+    Svg: require('../../static/img/undraw_complete_task_re_44tb.svg').default,
+    description: (
+      <>
+        {/* 完成目标 */}
+      </>
+    ),
+  },
+  {
+    title: '',
+    Svg: require('../../static/img/undraw_investing_re_bov7.svg').default,
+    description: (
+      <>
+        {/* 投资 */}
+      </>
+    ),
+  },
+  {
+    title: '',
+    Svg: require('../../static/img/undraw_design_objectives_re_94pd.svg').default,
+    description: (
+      <>
+        {/* 设计目标 */}
       </>
     ),
   },
@@ -17,10 +53,19 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_road_sign_re_3kc3.svg').default,
     description: (
       <>
-        
+        {/* 选择方向 */}
       </>
     ),
-  }
+  },
+  {
+    title: '',
+    Svg: require('../../static/img/undraw_lost_re_xqjt.svg').default,
+    description: (
+      <>
+        {/* 失去 */}
+      </>
+    ),
+  } 
 ];
 
 function Feature({Svg, title, description}) {

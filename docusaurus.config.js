@@ -16,9 +16,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   customFields: { // 自定义字段
     bio: '居安思危，善假于物',
     description:
-      '是一个由宇宁创建的个人博客，主要分享编程开发知识，该网站基于 React 驱动的静态网站生成器 Docusaurus 构建。',
+      '是一个由宇宁创建的个人博客，主要分享编程开发知识，该网站基于 React 驱动的静态网站生成器 Docusaurus 构建。'
   }, 
-
+  
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -41,7 +41,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       }),
     ],
   ],
-
+  
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -59,11 +59,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           content: '后端开发者, 面向全栈, 收藏者, 记录者',
         },
       ],
-      // docs: {
-      //   sidebar: {
-      //     hideable: true,
-      //   },
-      // },
       navbar: {
         title: '宇宁',
         logo: {
@@ -72,80 +67,52 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         hideOnScroll: true,// 把导航栏样式设置为静态,而不禁用主题切换能力
         items: [
+          {to: '/blog/archive', label: '博客', position: 'right'},
+          {to: '/docs/skill', label: '笔记', position: 'right'},
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: '自留教程',
-          },
-          {to: '/blog', label: '博客', position: 'left'},
-          {
-            href: 'https://huhohoo.com',
-            label: '友链',
-            position: 'left',
-          },
-          // ,{
-          //   href: 'https://github.com/Sunyunn/myWiki',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
-          // {
-          //   label: '更多',
-          //   position: 'right',
-          //   items: [
-          //     { label: '归档', to: 'blog/archive' },
-          //     { label: '笔记', to: 'docs/skill' },
-          //     { label: '资源', to: 'resources' },
-          //     { label: '友链', to: 'friends' },
-          //     { label: '工具推荐', to: 'docs/tools' },
-          //   ],
-          // },
-          {
-            type: 'localeDropdown',
+            label: '更多',
             position: 'right',
-          },
+            items: [
+              { label: '友链 宇豪',href: 'https://huhohoo.com'},
+              { label: 'Follow 张旭乾', href: 'https://zxuqian.cn'},
+              { label: 'Follow 愧怍', href: 'https://kuizuo.cn'}
+            ]
+          }
+          // ,{
+          //   type: 'localeDropdown',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
-            title: 'Docs',
+            title: '学习',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: '笔记',
+                to: '/docs/skill',
               },
             ],
           },
           {
-            title: 'Community',
+            title: '社交',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                label: 'GitHub',
+                href: 'https://github.com/Sunyunn/yn-Wiki',
+              }
             ],
           },
           {
-            title: 'More',
+            title: '更多',
             items: [
               {
                 label: '博客',
                 to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+              }
+              
             ],
           },
         ],
@@ -155,5 +122,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      // giscus 评论功能
+      giscus:{
+        repo:'Sunyunn/yn-Wiki',
+        repoId:'R_kgDOMCmV6Q',
+        category:'General',
+        categoryId:'DIC_kwDOMCmV6c4CgVeg'
+      }
     }),
 });
