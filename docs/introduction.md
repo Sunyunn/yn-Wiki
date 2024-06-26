@@ -4,6 +4,8 @@ sidebar_position: 1
 id: introduction
 slug: /skill
 title: 技术笔记
+date: 2024-06-24
+authors: syn
 keywords:
   - 前端
   - 后端
