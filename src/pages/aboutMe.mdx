@@ -1,0 +1,39 @@
+---
+id: about
+title: 关于我
+description: yuning的联系方式
+hide_table_of_contents: true
+---
+
+import Comment from '@site/src/components/Comment/comment';
+import { Icon } from '@iconify/react';
+import social from '@site/data/social';
+
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+    {children}
+  </span>
+);
+
+### 联系方式
+<p style={{ display: 'flex', 'align-items': 'center', gap: '0.5rem' }}>
+  <Icon icon="ri:github-line" width="20" heigth="20" />
+  <a href={social.github.href}>Sunyunn</a>
+</p>
+
+<p style={{ display: 'flex', 'align-items': 'center', gap: '0.5rem' }}>
+  <Icon icon="ri:mail-open-line" width="20" heigth="20" />
+  <a href={social.email.href}>m15189788652@163.com</a>
+</p>
+
+---
+
+> **<Highlight color="#25c2a0">相遇便是缘，欢迎留言。</Highlight>**
+
+<Comment />
