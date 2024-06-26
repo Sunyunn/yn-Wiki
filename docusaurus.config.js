@@ -92,8 +92,8 @@ import {themes} from 'prism-react-renderer';
             title: '学习',
             items: [
               {
-                label: '笔记',
-                to: '/docs/skill',
+                label: '算法入门',
+                to: 'https://www.hello-algo.com/',
               },
             ],
           },
@@ -104,7 +104,11 @@ import {themes} from 'prism-react-renderer';
               {
                 label: 'GitHub',
                 href: 'https://github.com/Sunyunn/yn-Wiki',
-              }
+              },
+              {
+                label: '博客园',
+                href: 'https://www.cnblogs.com/synn',
+              },
             ],
           },
           {

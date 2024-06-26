@@ -1,6 +1,6 @@
 ---
 sidebar_label: '技术笔记'
-sidebar_position: 5
+sidebar_position: 1
 id: introduction
 slug: /skill
 title: 技术笔记
