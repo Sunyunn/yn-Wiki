@@ -32,15 +32,6 @@ const FeatureList = [
   },
   {
     title: '',
-    Svg: require('../../static/img/undraw_investing_re_bov7.svg').default,
-    description: (
-      <>
-        {/* 投资 */}
-      </>
-    ),
-  },
-  {
-    title: '',
     Svg: require('../../static/img/undraw_design_objectives_re_94pd.svg').default,
     description: (
       <>
