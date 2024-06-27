@@ -79,10 +79,10 @@ import {themes} from 'prism-react-renderer';
           //     { label: '友链 宇豪',href: 'https://huhohoo.com'},
           //   ]
           // }
-          // ,{
-          //   type: 'localeDropdown',
-          //   position: 'right',
-          // },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
         ],
       },
       footer: {
@@ -140,5 +140,27 @@ import {themes} from 'prism-react-renderer';
       plugins: [
         'docusaurus-plugin-sass'
       ],
+      // Algolia 搜索功能
+      algolia: {
+        appId: 'PR3FDY7HTG',
+        apiKey: 'd405ee18ea75129fa9989ab9e86e1fac',
+        indexName: 'yn-com',
+        // 启用上下文搜索
+        contextualSearch: true,
+        
+        //... other Algolia params
+      },
     }),
+    i18n: {
+      defaultLocale: 'zh-CN',
+      locales: ['en', 'zh-CN'],
+      localeConfigs: {
+        en: {
+          htmlLang: 'en-GB',
+        },
+        'zh-CN': {
+          htmlLang: 'zh-CN',
+        },
+      },
+    },
 });

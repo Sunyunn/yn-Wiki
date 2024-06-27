@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Sundry": {
+    "message": "Sundry",
+    "description": "The label for category Sundry in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.skill": {
+    "message": "skill",
+    "description": "The label for category skill in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Layui": {
+    "message": "Layui",
+    "description": "The label for category Layui in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.MyBatis-Plus-Join": {
+    "message": "MyBatis-Plus-Join",
+    "description": "The label for category MyBatis-Plus-Join in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Npm": {
+    "message": "Npm",
+    "description": "The label for category Npm in sidebar tutorialSidebar"
+  }
+}
