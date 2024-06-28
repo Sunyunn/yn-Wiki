@@ -143,7 +143,7 @@ import {themes} from 'prism-react-renderer';
       // Algolia 搜索功能
       algolia: {
         appId: 'PR3FDY7HTG',
-        apiKey: 'd405ee18ea75129fa9989ab9e86e1fac',
+        apiKey: 'daffff7e2777b8fe51f7cd953ae8dd9c',
         indexName: 'yn-com',
         // 启用上下文搜索
         contextualSearch: true,
