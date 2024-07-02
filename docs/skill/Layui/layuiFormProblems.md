@@ -88,7 +88,7 @@ layui.use([ 'jquery','form'],function() {
             targetItemName = this.innerHTML;// 获得选中的城市名称
             form.val("formId", {
                 "score": dataResult,
-                "result": (targetWeight*dataResult).toFixed(2)
+				"result":Math.round((targetWeight*dataResult)*Math.pow(10, 2)) / Math.pow(10, 2)  
             });
     });	
 });	
