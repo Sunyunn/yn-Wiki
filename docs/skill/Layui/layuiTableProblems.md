@@ -6,7 +6,7 @@ date: 2024-06-26
 authors: syn
 ---
 
-#### 页面静态数据填充
+### 页面静态数据填充
 ```javascript
 <table lay-filter="testTable" lay-data="{id: 'testTable'}"></table>
 

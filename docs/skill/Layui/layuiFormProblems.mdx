@@ -7,13 +7,14 @@ authors: syn
 ---
 ## From 的问题汇总
 ### 1.监听select的选择事件
-```javascript
+```html
 <select title="相关单位"  id="AAA">
     <option value=""></option>
 	<option value="1">全部</option>
 	<option value="2">上海</option>
 </select>
-<script data-th-inline="none" type="text/javascript">
+```
+```javascript
 layui.use(['form'], function(){
     var form = layui.form;
 
@@ -21,7 +22,6 @@ layui.use(['form'], function(){
         console.log(data.value); // 被选中的值
     });
 })
-</script>
 ```
 
 ### 2.获取form表单中字段值的两种方法
@@ -46,7 +46,6 @@ console.log(endDateValue); // 输出当前输入框中的日期值
 </select>
 ```
 ```javascript
-<script data-th-inline="javascript">
 layui.use([ 'jquery','form'],function() {
 	var $ = layui.jquery;
 	var	form = layui.form;
@@ -91,8 +90,7 @@ layui.use([ 'jquery','form'],function() {
                 "result":Math.round((targetWeight*dataResult)*Math.pow(10, 2)) / Math.pow(10, 2)  
             });
     });	
-});	
-</script> 
+});
 ```
 ### 4.三级选择框联动
 ```html
@@ -107,7 +105,6 @@ layui.use([ 'jquery','form'],function() {
 </select>
 ```
 ```javascript
-<script data-th-inline="javascript">
 layui.use([ 'jquery','form'],function() {
 	var $ = layui.jquery;
 	var	form = layui.form;
@@ -165,8 +162,7 @@ layui.use([ 'jquery','form'],function() {
 			}
 		
 		});
-});	
-</script> 
+});
 ```
 ### 5.自定义验证规则
 ```html
