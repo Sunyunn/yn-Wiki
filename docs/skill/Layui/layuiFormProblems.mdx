@@ -5,8 +5,8 @@ title: 使用Form组件过程中遇到的问题解决
 date: 2024-06-26
 authors: syn
 ---
-### From 的问题汇总
-#### 1.监听select的选择事件
+## From 的问题汇总
+### 1.监听select的选择事件
 ```javascript
 <select title="相关单位"  id="AAA">
     <option value=""></option>
@@ -24,19 +24,19 @@ layui.use(['form'], function(){
 </script>
 ```
 
-#### 2.获取form表单中字段值的两种方法
-##### 方法1：直接通过 DOM 元素获取值
+### 2.获取form表单中字段值的两种方法
+#### 方法1：直接通过 DOM 元素获取值
 ```javascript
 var validEndDateInput = document.getElementById('validEndDate');
 var endDateValue = validEndDateInput.value;
 console.log(endDateValue); // 输出当前输入框中的日期值
 ```
-##### 方法 2: 使用 jQuery（如果项目中包含 jQuery）
+#### 方法 2: 使用 jQuery（如果项目中包含 jQuery）
 ```javascript
 var endDateValue = $('#validEndDate').val();
 console.log(endDateValue); // 输出当前输入框中的日期值
 ```
-#### 两级选择框联动
+### 3.两级选择框联动
 ```html
 <select title="国家" name="country" id="country">
  	<option value="">请选择国家</option>
@@ -94,7 +94,7 @@ layui.use([ 'jquery','form'],function() {
 });	
 </script> 
 ```
-#### 三级选择框联动
+### 4.三级选择框联动
 ```html
 <select name="stuNo" id="stuNo">
 	<option value="">请输入/选择学号</option>
@@ -168,7 +168,7 @@ layui.use([ 'jquery','form'],function() {
 });	
 </script> 
 ```
-#### 自定义验证规则
+### 5.自定义验证规则
 ```html
 <div class="layui-input-inline">
      <input type="text" name="schoolName" id="schoolName" class="layui-input" lay-verify="rule2">
@@ -189,7 +189,7 @@ form.verify({
 });
 
 ```       
-#### 表单字段后面加提示
+### 6.表单字段后面加提示
 ```html
 <div class="layui-input-inline">
 	 <select name="stuNO" id="stuNO"  lay-filter="stuNO" lay-verify="required">
