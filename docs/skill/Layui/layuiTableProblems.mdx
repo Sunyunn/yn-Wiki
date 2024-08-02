@@ -5,9 +5,9 @@ title: 使用Table组件过程中遇到的问题解决
 date: 2024-06-26
 authors: syn
 ---
-
-### 页面静态数据填充
-```javascript
+## Table 的问题汇总
+### 1.页面静态数据填充
+```html
 <table lay-filter="testTable" lay-data="{id: 'testTable'}"></table>
 
 <script type="text/html" id="barDemo">
@@ -15,8 +15,9 @@ authors: syn
     <a class="layui-btn layui-btn-xs" lay-event="detail">操作部分</a>
   </div>
 </script>
+```
 
-
+```javascript
 layui.use(['jquery','table'], function(){
   var $ = layui.jquery;
   var table = layui.table;
@@ -84,5 +85,23 @@ layui.use(['jquery','table'], function(){
 	    }
 	});
 });
-
+```
+### 2.表格字段填充日期时，对日期格式有需求
+#### 方法一：前端模板处理
+```javascript
+table.init({
+      cols: [[
+          {field: 'flightDate', title: '日期',align :'center',width : '10%'
+                ,templet:function(d){
+                    return layui.util.toDateString(d.cDate,'yyyy-MM-dd');
+                }
+          }
+      ]]
+});
+```
+#### 方法二：后端处理
+```
+import com.fasterxml.jackson.annotation.JsonFormat;
+@JsonFormat(pattern = "yyyy-MM-dd")
+private Date cDate;
 ```
