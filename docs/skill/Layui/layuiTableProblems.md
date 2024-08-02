@@ -16,7 +16,7 @@ authors: syn
   </div>
 </script>
 
-<script data-th-inline="none" type="text/javascript">
+
 layui.use(['jquery','table'], function(){
   var $ = layui.jquery;
   var table = layui.table;
@@ -84,5 +84,5 @@ layui.use(['jquery','table'], function(){
 	    }
 	});
 });
-</script>
+
 ```
