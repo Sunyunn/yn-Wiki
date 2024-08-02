@@ -203,3 +203,42 @@ form.verify({
 var textNode = document.createTextNode('注：只能输入/选择'+student.gradeName+'及其子班级内学生的学号');
 	document.getElementById('stuNoTip').appendChild(textNode);
 ```
+#### 日期比较(前端处理)
+```html
+<div class="layui-input-inline">
+    <input type="text" name="validBeginDate" id="validBeginDate" class="layui-input" readonly="readonly" placeholder="2024-07-30"/>
+</div>
+<div class="layui-input-inline">
+    <input type="text" name="validEndDate" id="validEndDate" class="layui-input" readonly="readonly" placeholder="2024-07-31"/>
+</div>
+```
+```javascript
+layui.use(['laydate'], function(){
+    var $query = $view.find('#query'); // 查询按钮id
+    laydate.render({
+        elem: '#validBeginDate',
+        trigger: 'click',
+        type: 'date',
+        format: 'yyyy-MM-dd'
+    });
+
+    laydate.render({
+        elem: '#validEndDate',
+        trigger: 'click',
+        type: 'date',
+        format: 'yyyy-MM-dd'
+    });
+
+    // 查询按钮
+    $query.on('click', function () {
+        var validBeginDate = $("#validBeginDate").val();
+        var validEndDate = $("#validEndDate").val();
+
+        if((new Date(validEndDate.replace(/-/g,"\/"))) < (new Date(validBeginDate.replace(/-/g,"\/")))){
+            muframe.alert.warn('查询的结束日期不能早于开始日期');
+            return false;
+        }
+        // 省略
+    });
+});
+```
