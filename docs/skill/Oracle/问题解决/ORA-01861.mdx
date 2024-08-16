@@ -1,0 +1,41 @@
+---
+sidebar_label: 'ORA-01861'
+sidebar_position: 1
+date: 2024-08-16
+authors: syn
+---
+
+### 1.问题描述：
+<p>
+    一般是传参给sql时，传递的日期格式和Orcale的日期格式比较报错。
+    比如：你想拿参数和数据表中字段（该字段属性是时间类型的）值作比较，where A表.该字段 = 参数。
+    to_date(参数,'YYYY-MM-DD')直接转是不行的，得先to_char(参数,'YYYY-MM-DD')格式化一下。
+    所以你可以写成这样：to_date(to_char(参数,'YYYY-MM-DD'))
+</p>
+<p>
+    但如果你的表字段属性是varchar类型的，就可以直接比较：
+    参数 &It;=  ‘A表.该字段’ and 参数 >= 'A表.该字段'。
+</p>
+
+### 2.题外话
+```javascript
+如果想在xml中接到一个date类型的参数，想查询它未来几天的时候，也可以使用  INTERVAL 'X天' DAY ，（默认X最多是两位数），如下：
+
+查未来2天：
+
+WHERE
+1=1
+AND A表.该字段  BETWEEN  to_date(#{datetime}, 'YYYY-MM-DD HH24:MI:SS')
+AND  (to_date(#{datetime}, 'YYYY-MM-DD HH24:MI:SS') + INTERVAL '2' DAY)
+
+如果是查询之前几天就   INTERVAL '-X天' DAY 。（默认X最多是两位数）
+
+如果不用传参，如单单是查询5年内的订单信息：
+select from oe.orders where order_date &It; (SYSDATE - INTERVAL '5' YEAR )
+```
+
+
+### 2.关于INTERVAL函数的进一步学习，可以参考
+<p>
+    <a href="https://www.cnblogs.com/jijm123/p/13880614.html">oracle 中的INTERVAL 函数解析学习笔记</a>
+</p>

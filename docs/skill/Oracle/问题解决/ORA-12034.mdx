@@ -1,0 +1,101 @@
+---
+sidebar_label: 'ORA-12034'
+sidebar_position: 1
+date: 2024-08-16
+authors: syn
+---
+
+### 表述为: “ dd＂.＂USER_TABLE” 上的实体化视图日志比上次刷新后的内容新
+
+### 1.问题背景：
+
+##### 1）A表原本就有一个物化视图。
+
+##### 2）操作过程：
+
+因为需要将A表数据分出一部分到B表，因此修改了A表一个字段M名称，等将A表部分数据复制到B表完毕后，又将A表被修改的字段名再改回来。
+
+##### 3）在系统操作页面，出现对A表操作查询报错ora-12304
+
+### 2.解决过程：
+
+##### 1）尝试全量刷新物化视图
+```html
+    ----查询物化视图
+    SELECT mview_name, last_refresh_date, fullrefreshtim, increfreshtim
+      FROM dba_mview_analysis;
+    select * from user_objects where object_type='MATERIALIZED VIEW';
+    ---假如查询结果是得到一个视图名为：MV_FORCE_READ_CONTENT
+    ----对物化视图进行全量刷新
+    exec dbms_mview.refresh('MV_FORCE_READ_CONTENT','C');
+    exec dbms_mview.refresh('MV_FORCE_READ_CONTENT');
+```
+##### 2）物化视图全量刷新后，系统操作页面，对A表查询操作恢复正常，但是对A表进行新增插入数据操作异常，报错ora-12304
+```html
+----错误提示样例
+SqlMapClient operation;uncategorized
+SQLException for SQL []SQL state [99999];error code[12034]
+--The error occurred in EmptyMapping.xml
+--The error occurred while applying a parameter map
+---Check the insertForceReadContent-InlineParameterMap
+---Check the statement (update failed)
+Cause:java.sql.SQLException:ORA-12034:"DD"."USER TABLE"上的实体化视图日志比上次刷新后的内容新
+nested exception is
+com.ibatis.common.jdbc.exception.NestedSQLExce
+--The error occurred in EmptyMapping.xml
+--The error occurred while applying a parameter map
+---Check the insertForceReadContent-InlineParameterMap
+---Check the statement (update failed)
+Cause:java.sql.SQLException:ORA-12034:"DD","USER TABLE"上的实体化视图日志比上次刷新后的内容新[SQL:12034,99999]
+```
+##### 3）再次对物化视图进行全量更新，出现更新后新增插入成功，再新增则又出现ora-12304报错
+##### 4）决定删除物化视图
+```html
+DROP VIEW MV_FORCE_READ_CONTENT;
+---也可能是
+DROP MATIALIZED VIEW MV_FORCE_READ_CONTENT;√√
+```
+##### 5）系统操作页面新增不再异常ora-12304,查询也正常。
+##### 6）因为物化视图原本就是用来提升查询速度的，本质上是对查询结果的快照。可以结合物化视图的业务使用场景上别的地方有没有用，来选择是否重新建立物化视图。
+
+### 3.补充
+
+##### 7）删除物化视图后重新创建物化视图
+```html
+CREATE MATERIALIZED VIEW MV_CMS_FORCE_READ_CONTENT
+REFRESH FAST ON COMMIT
+AS
+SELECT *或者想要的字段 FROM 表名 WHERE 条件;---条件有许多要注意的地方，详见文章最后链接。
+
+-----举个例子
+CREATE MATERIALIZED VIEW MV_CMS_FORCE_READ_CONTENT
+REFRESH FAST ON COMMIT
+AS
+SELECT rowid as rid,VALID_DATE,CONTENT_ID from dd.user_table where VALIDITY = 'VALID';
+```
+##### 8）如果在重新创建物化视图出现权限问题，报错ora-01031
+```html
+----查询谁有创建物化视图的权限
+SELECT * FROM DBA_SYS_PRIVS WHERE PRIVILEGE = 'CREATE MATERIALIZED VIEW';
+----有权限的用户角色来给权限，（这只是简单的介绍，详细可以见文章最后链接）
+grant create MATERIALIZED view to 希望的用户名
+```
+### 4.普通视图VS物化视图
+```html
+--普通视图创建语句
+create or replace view test_a as select * from user;
+select * from test_a;
+--物化视图创建语句
+CREATE MATERIALIZED VIEW test_b
+    REFRESH FORCE ON COMMIT
+AS
+SELECT *
+FROM user;
+```
+### 5.值得参考的一些文章链接
+<p>
+    - <a href="https://cloud.tencent.com/developer/article/2073530">Oracle物化视图详解</a>
+    - <a href="https://blog.csdn.net/ciyao5958/article/details/100249514">物化视图使用总结</a>
+    - <a href="https://blog.51cto.com/u_16213582/9476159">sql server 如何创建物化视图</a>
+    - <a href="https://blog.51cto.com/u_16213652/10536829">sql server 的物化视图在那查看 数据库物化</a>
+</p>
